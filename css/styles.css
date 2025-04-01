@@ -735,6 +735,7 @@ body {
     padding-top: 5px;
     scrollbar-width: thin;
     scrollbar-color: rgba(65, 105, 225, 0.2) transparent;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .experience-options::-webkit-scrollbar {
@@ -753,13 +754,14 @@ body {
 .experience-option {
     flex: 1;
     min-width: 75px;
+    position: relative;
 }
 
 .option-card {
     background-color: var(--bg-light);
     border: 1px solid #e9ecef;
     border-radius: 6px;
-    padding: 6px 4px;
+    padding: 5px 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -768,6 +770,10 @@ body {
     transition: all 0.3s ease;
     height: 100%;
     font-size: 0.8rem;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .option-card h4 {
@@ -775,6 +781,10 @@ body {
     font-size: 0.8rem;
     text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 2px;
     font-weight: 500;
 }
 
@@ -784,16 +794,26 @@ body {
     font-weight: 500;
     text-align: center;
     width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.experience-option input[type="radio"] {
+    display: none;
 }
 
 .experience-option input[type="radio"]:checked + .option-card {
-    border-color: var(--primary);
-    border-width: 2px;
+    border: 2px solid var(--primary);
     box-shadow: 0 2px 8px rgba(65, 105, 225, 0.15);
-    transform: scale(1.05);
+    transform: none;
     background-color: rgba(65, 105, 225, 0.05);
     z-index: 1;
     position: relative;
+    padding: 3px 1px;
+    margin: 0;
+    inset: 0;
+    box-sizing: border-box;
 }
 
 .experience-option input:checked + .option-card .price {
@@ -812,7 +832,7 @@ body {
 .service-option {
     margin-bottom: 0;
     flex: 1;
-    min-width: 160px;
+    min-width: 140px; /* Reduce minimum width */
 }
 
 .service-option label {
@@ -826,6 +846,8 @@ body {
     border-radius: 8px;
     border: 1px solid #e9ecef;
     transition: all 0.2s ease;
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis;
 }
 
 .service-option input[type="checkbox"] {
@@ -1000,17 +1022,38 @@ body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        margin-bottom: 15px;
         width: 100%;
         overflow-x: visible;
+        margin-bottom: 15px;
     }
     
     .experience-option {
         min-width: auto;
+        width: 100%;
+        position: relative;
     }
     
     .option-card {
         height: 100%;
+        padding: 4px 2px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e9ecef;
+    }
+    
+    .experience-option input[type="radio"]:checked + .option-card {
+        border: 2px solid var(--primary);
+        transform: none;
+        padding: 3px 1px;
+    }
+    
+    .option-card h4 {
+        font-size: 0.75rem;
+        margin-bottom: 1px;
+    }
+    
+    .option-card .price {
+        font-size: 0.75rem;
     }
     
     /* Additional form mobile fixes */
@@ -1050,16 +1093,25 @@ body {
     }
     
     .experience-options {
-        grid-template-columns: 1fr 1fr;
         gap: 6px;
     }
     
+    .option-card {
+        padding: 3px 2px;
+    }
+    
+    .experience-option input[type="radio"]:checked + .option-card {
+        padding: 2px 1px;
+        border: 2px solid var(--primary);
+        transform: none;
+    }
+    
     .option-card h4 {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .option-card .price {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .service-option label {
@@ -1568,14 +1620,36 @@ body {
         gap: 8px;
         width: 100%;
         overflow-x: visible;
+        margin-bottom: 15px;
     }
     
     .experience-option {
         min-width: auto;
+        width: 100%;
+        position: relative;
     }
     
     .option-card {
         height: 100%;
+        padding: 4px 2px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e9ecef;
+    }
+    
+    .experience-option input[type="radio"]:checked + .option-card {
+        border: 2px solid var(--primary);
+        transform: none;
+        padding: 3px 1px;
+    }
+    
+    .option-card h4 {
+        font-size: 0.75rem;
+        margin-bottom: 1px;
+    }
+    
+    .option-card .price {
+        font-size: 0.75rem;
     }
 }
 
@@ -1586,20 +1660,33 @@ body {
     }
     
     .experience-options {
-        grid-template-columns: 1fr 1fr;
         gap: 6px;
     }
     
+    .option-card {
+        padding: 3px 2px;
+    }
+    
+    .experience-option input[type="radio"]:checked + .option-card {
+        padding: 2px 1px;
+        border: 2px solid var(--primary);
+        transform: none;
+    }
+    
     .option-card h4 {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .option-card .price {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .service-option label {
         font-size: 0.8rem;
         padding: 6px 8px;
+    }
+    
+    .content-section {
+        padding: 10px 15px 20px;
     }
 } 
