@@ -1034,26 +1034,33 @@ body {
     }
     
     .option-card {
-        height: 100%;
-        padding: 4px 2px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #e9ecef;
-    }
-    
-    .experience-option input[type="radio"]:checked + .option-card {
-        border: 2px solid var(--primary);
-        transform: none;
-        padding: 3px 1px;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        padding: 8px 8px !important;
+        height: auto !important;
     }
     
     .option-card h4 {
-        font-size: 0.75rem;
-        margin-bottom: 1px;
+        margin: 0 !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-align: left !important;
     }
     
     .option-card .price {
-        font-size: 0.75rem;
+        margin-left: auto !important;
+        font-weight: 500 !important;
+        white-space: nowrap !important;
+    }
+    
+    .experience-option input[type="radio"]:checked + .option-card .price {
+        color: var(--primary) !important;
+        font-weight: 600 !important;
     }
     
     /* Additional form mobile fixes */
