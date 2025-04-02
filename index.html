@@ -28,7 +28,7 @@
 
         /* How it Works section styling */
         .how-it-works {
-            padding: 40px 0;
+            padding: 40px 20px;
             margin: 30px 0;
             background-color: #f8f9fa;
             border-radius: 12px;
@@ -36,7 +36,7 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
@@ -56,24 +56,34 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
         }
 
         .process-steps {
             display: flex;
             justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+            align-items: flex-start;
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Dotted line connecting steps */
+        .process-steps:before {
+            content: "";
+            position: absolute;
+            top: 35px;
+            left: 70px;
+            right: 70px;
+            height: 2px;
+            border-top: 3px dotted #bbb;
+            z-index: 0;
         }
 
         .process-step {
-            flex: 0 0 auto;
+            flex: 1;
             text-align: center;
-            padding: 15px 10px;
-            width: 140px;
+            max-width: 140px;
+            margin: 0 5px;
             position: relative;
             z-index: 1;
         }
@@ -89,47 +99,54 @@
             margin: 0 auto 15px;
             color: white;
             font-size: 24px;
-            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 4px 10px rgba(65, 105, 225, 0.3);
             position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .process-step:hover .step-icon {
-            transform: scale(1.1);
+            z-index: 2;
         }
 
         .process-step h3 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin: 0;
             line-height: 1.4;
             color: #444;
+            margin: 0;
+            word-wrap: break-word;
         }
 
         .step-arrow {
-            color: #aaa;
-            font-size: 20px;
             display: flex;
             align-items: center;
-            padding: 0 5px;
+            justify-content: center;
+            color: #aaa;
+            font-size: 20px;
+            padding: 0;
+            margin-top: 25px;
+            z-index: 1;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .process-steps {
                 flex-direction: column;
-                padding: 0 10px;
+                align-items: center;
+            }
+
+            .process-steps:before {
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                height: auto;
+                border-top: none;
+                border-left: 3px dotted #bbb;
             }
 
             .process-step {
-                width: 100%;
-                max-width: 180px;
-                margin-bottom: 10px;
+                margin: 0 0 30px 0;
             }
 
             .step-arrow {
                 transform: rotate(90deg);
-                margin: 5px 0;
+                margin: 10px 0;
             }
         }
     </style>
