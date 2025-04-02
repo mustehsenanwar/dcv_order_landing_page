@@ -208,10 +208,129 @@
                 gap: 10px;
             }
         }
+
+        /* Mobile layout adjustments - Form first, content second */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .form-section,
+            .content-section {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .form-section {
+                order: 1;
+                /* Form first on mobile */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            .content-section {
+                order: 2;
+                /* Content second on mobile */
+            }
+        }
+
+        /* Mobile-only logo - full width above form */
+        .mobile-logo {
+            display: none;
+            /* Hidden by default on desktop */
+            width: 100%;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-logo img {
+            max-height: 50px;
+            width: auto;
+            margin-bottom: 15px;
+        }
+
+        .mobile-logo h2 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .mobile-logo p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Container layout for mobile */
+            .container {
+                flex-direction: column;
+            }
+
+            /* Show mobile logo */
+            .mobile-logo {
+                display: block;
+            }
+
+            /* Form section first on mobile */
+            .form-section {
+                width: 100%;
+                order: 1;
+            }
+
+            /* Content section second on mobile */
+            .content-section {
+                width: 100%;
+                order: 2;
+            }
+
+            /* Hide ONLY the logo container and hero-content in content section */
+            .content-section .logo-container,
+            .content-section .hero .hero-content {
+                display: none;
+            }
+
+            /* EXPLICITLY keep experience cards visible */
+            .hero .experience-value-cards {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 20px;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            /* Ensure value cards are visible */
+            .value-card {
+                display: flex !important;
+                flex-direction: column;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            /* Ensure card contents are visible */
+            .value-header,
+            .value-features {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Mobile-only logo - only visible on mobile devices -->
+    <div class="mobile-logo">
+        <img src="image/dubaicv-logo.svg" alt="DubaiCV - Professional CV Writing Service">
+        <h2>Prof CV Writing Service in Dubai</h2>
+        <p>Personalized one-on-one service designed to meet your career goals.</p>
+    </div>
+
     <div class="container">
         <div class="content-section">
             <div class="logo-container">
@@ -221,7 +340,7 @@
             <section class="hero">
                 <div class="hero-content">
                     <h2>Professional CV Writing Service in Dubai</h2>
-                    <p>Personalized one-on-one service tailored to your career goals</p>
+                    <p>Personalized one-on-one service designed to meet your career goals</p>
                 </div>
 
                 <div class="experience-value-cards">
